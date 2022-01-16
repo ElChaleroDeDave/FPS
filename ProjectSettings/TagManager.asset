@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Enemy
+  - Gun Ammo
   layers:
   - Default
   - TransparentFX
