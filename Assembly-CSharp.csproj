@@ -55,16 +55,18 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\IA\IA.cs" />
     <Compile Include="Assets\Nokobot\Modern Guns - Handgun\_Demo Assets\SimpleShoot.cs" />
+    <Compile Include="Assets\Scripts\World\AmmoBox.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerInteractions.cs" />
     <Compile Include="Assets\Scripts\Weapon\Gun.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\Weapon\Bullet.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraLook.cs" />
     <Compile Include="Assets\Scripts\SimpleCameraController.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Granade.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponSway.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
-    <Compile Include="Assets\Scripts\World\AmmoBox.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerInteractions.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Weapon\ThrowGrenade.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Nokobot\Modern Guns - Handgun\README.txt" />
