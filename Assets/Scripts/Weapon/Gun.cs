@@ -13,12 +13,24 @@ public class Gun : MonoBehaviour
 
     private float shotRateTime = 0;
 
-   void Update()
+    private AudioSource audioSource;
+    public AudioClip shotSound;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
+
+
+    void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
             if (Time.time > shotRateTime && GameManager.Instance.gunAmmo >0)
             {
+                audioSource.PlayOneShot(shotSound);
+
                 GameManager.Instance.gunAmmo--;
 
             GameObject newBullet;

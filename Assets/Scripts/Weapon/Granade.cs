@@ -14,9 +14,15 @@ public class Granade : MonoBehaviour
 
     bool exploded = false;
 
+    private AudioSource audioSource;
+    public AudioClip explosionSound;
+
+
     public GameObject explosionEffect;
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         countdown = delay;
     }
 
@@ -49,6 +55,12 @@ public class Granade : MonoBehaviour
 
         }
 
-        Destroy(gameObject);
+        audioSource.PlayOneShot(explosionSound);
+
+        gameObject.GetComponent<SphereCollider>().enabled = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+
+
+        Destroy(gameObject,delay*2);
     }
 }

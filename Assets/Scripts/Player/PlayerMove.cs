@@ -20,7 +20,21 @@ public class PlayerMove : MonoBehaviour
 
     public float jumpHeight = 3;
 
-    // Update is called once per frame
+    public bool isSprinting;
+
+    public float sprintingSpeedMultiplier = 1.5f;
+
+    private float sprintSpeed = 1;
+
+    public float staminaUseAmount = 5;
+
+    private StaminaBar staminaSlider;
+
+    private void Start()
+    {
+        staminaSlider = FindObjectOfType<StaminaBar>();
+    }
+
     void Update()
     {
 
@@ -37,15 +51,53 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
-        }
+        JumpCheck();
 
-        charactercontroller.Move(move * speed * Time.deltaTime);
+        RunCheck();
+
+        charactercontroller.Move(move * speed * Time.deltaTime*sprintSpeed);
         
         velocity.y += gravity * Time.deltaTime;
 
         charactercontroller.Move(velocity * Time.deltaTime);
     }
+
+    public void JumpCheck()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2 * gravity);
+        }
+    }
+
+    public void RunCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isSprinting = !isSprinting;
+
+            if (isSprinting==true)
+            {
+                staminaSlider.UseStamina(staminaUseAmount);
+
+            }
+            else
+            {
+                staminaSlider.UseStamina(0);
+
+            }
+        }
+        if (isSprinting ==true)
+        {
+            sprintSpeed = sprintingSpeedMultiplier;
+
+        }
+        else
+        {
+            sprintSpeed = 1;
+
+        }
+    }
+
 }
